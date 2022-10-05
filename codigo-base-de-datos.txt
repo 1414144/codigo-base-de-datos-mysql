@@ -1,0 +1,11 @@
+conexion=mysql.connector.connect(host="localhost",port="3306",user="root",password="")
+bd=conexion.cursor()
+bd.execute("CREATE DATABASE IF NOT EXISTS biblioteca")
+bd.close()
+
+conexion=mysql.connector.connect(host="localhost",port="3306",user="root",password="",database="biblioteca")
+bd=conexion.cursor()
+bd.execute("CREATE TABLE IF NOT EXISTS inventario(Codigo VARCHAR(25),Libro VARCHAR(55),Autor VARCHAR(55),Año_Publicado VARCHAR(55),genero VARCHAR(55))")
+bd.execute("CREATE TABLE IF NOT EXISTS cliente(Identificacion VARCHAR(25),Nombre VARCHAR(55),Seccion VARCHAR(55))")
+bd.execute("CREATE TABLE IF NOT EXISTS prestamo(cod_libro VARCHAR(25),Nombre_libro VARCHAR(55),Genero_libro VARCHAR(55),cantidad VARCHAR(55),identificacion_cliente VARCHAR(55),nombre_cliente VARCHAR(55))")
+bd.close()
